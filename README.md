@@ -57,6 +57,14 @@ In `src/config.js` multiple config variables are available for tweaking. Copy
 `config_local.js.example` to `src/config_local.js` and use it to modify configs
 for your own bot rather than directly modifying `src/config.js` defaults.
 
+## Contributing
+
+All kind of contribution is welcome, issues, contact via channels, pull requests.
+
+Pull Request rule:
+Prefix `[WIP]` in the PR title means, have a look if you like, but not ready to
+merge.
+
 ## Upload
 
     npm install
