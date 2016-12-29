@@ -39,7 +39,6 @@ Room.prototype.myHandleRoom = function() {
     Memory.stats[pathBegin + '.queueLength'] = this.memory.queue.length;
     Memory.stats[pathBegin + '.creepsIn'] = this.find(FIND_CREEPS).length;
     Memory.stats[pathBegin + '.sourcesEnergy'] = _.sum(_.map(this.find(FIND_SOURCES), 'energy'));
-
     let storage = this.storage || {
       store: {}
     };

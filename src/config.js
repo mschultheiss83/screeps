@@ -27,7 +27,7 @@ global.config = {
   },
 
   stats: {
-    enabled: false,
+    enabled: true,
     summary: false,
   },
 
