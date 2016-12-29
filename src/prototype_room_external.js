@@ -282,7 +282,7 @@ Room.prototype.handleReservedRoom = function() {
     });
 
     if (reservers.length === 0) {
-
+      let base = Game.rooms[this.memory.reservation.base];
       this.memory.lastChecked = Game.time;
       let reserverSpawn = {
         role: 'reserver',
@@ -304,13 +304,14 @@ Room.prototype.handleReservedRoom = function() {
         return;
       }
 
-      if (Game.rooms[this.memory.reservation.base].misplacedSpawn) {
+      if (base.misplacedSpawn) {
         energyThreshold = 1600;
       }
-      this.log('Would like to spawn reserver' + Game.rooms[this.memory.reservation.base].energyCapacityAvailable + ' ' + energyThreshold);
-      if (Game.rooms[this.memory.reservation.base].controller.level > 3 && Game.rooms[this.memory.reservation.base].energyCapacityAvailable > energyThreshold) {
+      this.log('Would like to spawn reserver' + base.energyCapacityAvailable + ' ' + energyThreshold);
+      if (base.controller.level > 3 && base.energyCapacityAvailable > energyThreshold) {
         this.log('Queuing reserver ' + this.memory.reservation.base + ' ' + JSON.stringify(reserverSpawn));
-        Game.rooms[this.memory.reservation.base].memory.queue.push(reserverSpawn);
+        base.checkRoleToSpawn('reserver', 1, this.controller.id, this.name, 2);
+        // Game.rooms[this.memory.reservation.base].memory.queue.push(reserverSpawn);
       }
     }
   }
@@ -495,7 +496,7 @@ Room.prototype.handleSourceKeeperRoom = function() {
         }
       };
       this.log(`!!!!!!!!!!!! ${JSON.stringify(spawn)}`);
-      Game.rooms[this.memory.base].memory.queue.push(spawn);
+      Game.rooms[this.memory.base].checkRoleToSpawn('sourcer', 1, source.id, source.pos.roomName);
     }
   }
 
