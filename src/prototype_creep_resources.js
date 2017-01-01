@@ -846,7 +846,8 @@ Creep.prototype.handleReserver = function() {
         Game.rooms[creep.memory.base].memory.queue.push({
           role: 'structurer',
           routing: {
-            targetRoom: this.name,
+            // fixes current room
+            targetRoom: creep.room.name,
             reached: false,
             routePos: 0,
             pathPos: 0
